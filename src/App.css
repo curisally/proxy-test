@@ -1,0 +1,302 @@
+/* src/App.css */
+
+/* 关键帧动画 */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* General App Layout */
+.app-layout {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9f2f1 100%);
+  transition: background-color 0.3s ease;
+}
+
+.app-header {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 0 24px;
+  border-bottom: 1px solid rgba(232, 232, 232, 0.7);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.app-header-title {
+  margin: 16px 0 !important;
+  color: #2c3e50 !important; /* 更深沉现代的标题颜色 */
+  line-height: 32px !important;
+  font-weight: 600 !important;
+  transition: transform 0.2s ease;
+}
+
+.app-header-title:hover {
+  transform: translateY(-1px);
+}
+
+.app-header-title .anticon {
+  transition: transform 0.3s ease;
+}
+
+.app-header-title:hover .anticon {
+  transform: rotate(15deg);
+}
+
+.app-content {
+  padding: 28px;
+  margin: 0;
+  animation: fadeIn 0.6s ease-out;
+}
+
+.app-footer {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 14px 24px;
+  border-top: 1px solid rgba(232, 232, 232, 0.7);
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.04);
+  color: #667788;
+  transition: all 0.3s ease;
+}
+
+.app-footer a {
+  color: #2a79e0; /* 更鲜艳的链接蓝 */
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.app-footer a:hover {
+  color: #185cbc;
+  text-decoration: none;
+}
+
+.app-footer a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: -1px;
+  left: 0;
+  background-color: currentColor;
+  transition: width 0.3s ease;
+}
+
+.app-footer a:hover::after {
+  width: 100%;
+}
+
+/* Card Styling */
+.app-card {
+  background-color: #ffffff;
+  border-radius: 12px; /* 更圆润的边角 */
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06); /* 精致阴影 */
+  border: none; /* 移除Ant Design默认边框 */
+  margin-bottom: 24px; /* 一致的间距 */
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  animation: fadeIn 0.5s ease-out;
+}
+
+.app-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* 自定义卡片标题 */
+.card-title-custom {
+  margin-bottom: 0 !important;
+  font-size: 1.25rem !important; /* 稍大的标题 */
+  font-weight: 500 !important;
+  color: #2c3e50;
+  position: relative;
+  padding-left: 2px;
+  transition: color 0.2s ease;
+}
+
+.card-title-custom::before {
+  content: '';
+  position: absolute;
+  left: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 16px;
+  background: linear-gradient(to bottom, #2a79e0, #1890ff);
+  border-radius: 2px;
+  opacity: 0;
+  transition: opacity 0.3s ease, left 0.3s ease;
+}
+
+.app-card:hover .card-title-custom::before {
+  opacity: 1;
+  left: -6px;
+}
+
+/* Ant Design Form elements will retain their styles */
+/* We are not overriding .ant-form-item, .ant-input, .ant-btn etc. */
+
+/* Statistic Styling */
+.statistic-success .ant-statistic-content-value {
+  color: #28a745 !important; /* Bootstrap success green */
+  transition: color 0.3s ease, transform 0.3s ease;
+  display: inline-block;
+}
+
+.statistic-success:hover .ant-statistic-content-value {
+  color: #20913a !important;
+  transform: scale(1.05);
+}
+
+.statistic-error .ant-statistic-content-value {
+  color: #dc3545 !important; /* Bootstrap danger red */
+  transition: color 0.3s ease, transform 0.3s ease;
+  display: inline-block;
+}
+
+.statistic-error:hover .ant-statistic-content-value {
+  color: #c82333 !important;
+  transform: scale(1.05);
+}
+
+/* 统计数字载入动画 */
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.ant-statistic-content-value {
+  animation: countUp 0.8s ease-out;
+}
+
+/* Table Row Highlighting */
+.table-row-success > td {
+  background-color: rgba(230, 255, 237, 0.7) !important; /* 更轻柔的绿色 */
+  transition: background-color 0.3s ease;
+}
+
+.table-row-success:hover > td {
+  background-color: rgba(230, 255, 237, 0.9) !important;
+}
+
+.table-row-error > td {
+  background-color: rgba(255, 241, 240, 0.7) !important; /* 更轻柔的红色 */
+  transition: background-color 0.3s ease;
+}
+
+.table-row-error:hover > td {
+  background-color: rgba(255, 241, 240, 0.9) !important;
+}
+
+/* Ensure Ant Design Table styles are not overly aggressive or are complemented */
+.ant-table {
+  background-color: #ffffff; /* Ensure table itself has a white background if not already */
+  border-radius: 8px;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+
+.ant-table:hover {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.03);
+}
+
+.ant-table-thead > tr > th {
+  background: linear-gradient(to right, #f8f9fa, #f2f6f5) !important; /* 渐变表头 */
+  font-weight: 600;
+  color: #2c3e50;
+  padding: 16px 16px;
+  transition: background-color 0.3s ease;
+}
+
+/* Alert styling - 增强Alert效果 */
+.ant-alert {
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  animation: fadeIn 0.4s ease-out;
+}
+
+.ant-alert:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Spin styling - 使加载更吸引人 */
+.ant-spin-spinning {
+  transition: opacity 0.3s ease;
+}
+
+.ant-spin-dot-item {
+  background-color: #1890ff; /* Ant Design蓝 */
+}
+
+/* Typography - 使用有限的自定义文本 */
+.custom-text-muted {
+  color: #6c757d; /* Bootstrap muted color */
+  transition: color 0.3s ease;
+}
+
+/* 按钮增强 */
+.ant-btn {
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.ant-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(24, 144, 255, 0.15);
+}
+
+.ant-btn-primary {
+  background: linear-gradient(to right, #1890ff, #096dd9) !important;
+  box-shadow: 0 2px 8px rgba(24, 144, 255, 0.2);
+}
+
+.ant-btn-primary:hover {
+  box-shadow: 0 4px 12px rgba(24, 144, 255, 0.3);
+}
+
+/* 表格动画 */
+.ant-table-tbody > tr {
+  transition: transform 0.2s ease;
+}
+
+.ant-table-tbody > tr:hover {
+  transform: translateY(-1px);
+}
+
+/* 输入框增强 */
+.ant-input, .ant-input-affix-wrapper, .ant-input-number {
+  transition: all 0.3s ease !important;
+  border-radius: 6px !important;
+}
+
+.ant-input:hover, .ant-input-affix-wrapper:hover, .ant-input-number:hover {
+  border-color: #1890ff !important;
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.1) !important;
+}
+
+.ant-input:focus, .ant-input-affix-wrapper-focused, .ant-input-number-focused {
+  border-color: #1890ff !important;
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2) !important;
+}
+
+/* Tag增强 */
+.ant-tag {
+  transition: all 0.3s ease;
+  border-radius: 4px;
+}
+
+.ant-tag:hover {
+  transform: translateY(-1px);
+}

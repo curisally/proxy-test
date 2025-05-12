@@ -1,0 +1,125 @@
+:root {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  line-height: 1.6; /* 增加行高以提高可读性 */
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #2c3e50; /* 全局文本颜色 - 更深沉、现代的颜色 */
+  scroll-behavior: smooth; /* 平滑滚动效果 */
+}
+
+/* 全局滚动条美化 */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #aaa;
+}
+
+body {
+  margin: 0;
+  transition: background-color 0.3s ease;
+  /* background-color is handled by .app-layout in App.css or Ant Design's theme */
+  /* color is handled by components or Ant Design's theme */
+}
+
+/* 选择文本的颜色 */
+::selection {
+  background-color: rgba(24, 144, 255, 0.2);
+  color: #1890ff;
+}
+
+/* 全局动画效果 */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 页面元素载入动画 */
+.ant-layout, .ant-card, .ant-form, .ant-input, .ant-table {
+  animation: fadeInUp 0.5s ease-out;
+}
+
+/* Remove default browser button styling if it conflicts with Ant Design buttons */
+/* Ant Design's Button component should handle its own styling. */
+button {
+  cursor: pointer;
+}
+
+/* Keep link styling simple, AntD components will often have their own link styles */
+a {
+  color: #2a79e0; /* 更鲜艳的链接蓝 */
+  text-decoration: none; /* 更干净的外观 */
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+a:hover {
+  color: #185cbc;
+  text-decoration: none;
+}
+
+/* 添加下划线动画效果 */
+a:not(.ant-btn):not([class*="ant-"]):after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: -1px;
+  left: 0;
+  background-color: currentColor;
+  transition: width 0.3s ease;
+}
+
+a:not(.ant-btn):not([class*="ant-"]):hover:after {
+  width: 100%;
+}
+
+/* 全局焦点轮廓样式 */
+*:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+}
+
+/* 表单项动画效果 */
+.ant-form-item {
+  transition: all 0.3s ease;
+}
+
+.ant-form-item:focus-within {
+  transform: translateY(-2px);
+}
+
+/* 优化图标动画 */
+.anticon {
+  transition: transform 0.2s ease;
+}
+
+button:hover .anticon,
+a:hover .anticon {
+  transform: translateX(2px);
+}
+
+/* 移除深色模式特定样式，由Ant Design主题或App.css处理 */
+/* 为简单起见，我们假设使用Ant Design的默认浅色主题 */

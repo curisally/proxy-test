@@ -1,0 +1,30 @@
+# Git
+.git
+.gitignore
+
+# Node.js
+node_modules
+npm-debug.log
+yarn-error.log
+pnpm-debug.log
+
+# Frontend build artifacts (if they exist locally before Docker build)
+dist
+.vite
+
+# Python
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+env
+venv
+.env
+
+# IDE / OS specific
+.vscode
+.idea
+*.swp
+*~
+.DS_Store

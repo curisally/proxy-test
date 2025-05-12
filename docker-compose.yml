@@ -1,0 +1,10 @@
+version: '3.8' # 或者其他合适的 Compose 文件版本
+
+services:
+  proxy-checker: # 服务名称，可以自定义，例如 app 或 proxy-checker
+    image: vichus/proxy-checker:latest # 指定要使用的 Docker 镜像
+    ports:
+      - "5001:5001" # 将主机的 5001 端口映射到容器的 5001 端口
+    restart: unless-stopped # 可选：设置重启策略，例如除非手动停止，否则容器会自动重启
+    # build: . # 可选：如果希望 docker-compose build 能够构建镜像，可以取消注释此行
+               # 但主要目的是运行已存在的 vichus/proxy-checker:latest 镜像
