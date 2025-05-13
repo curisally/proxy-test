@@ -9,7 +9,7 @@ app = Flask(__name__, static_folder='dist', static_url_path='')
 CORS(app)  # 允许跨域请求，方便开发
 
 # 用于测试代理的目标URL
-TEST_URL = 'http://httpbin.org/ip'
+TEST_URL = 'https://api.ipify.org?format=json'
 # 备选: TEST_URL = 'https://api.ipify.org?format=json'
 
 def test_single_proxy(proxy_str, get_geo_location=False):

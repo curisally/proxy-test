@@ -1,54 +1,27 @@
-# React + TypeScript + Vite
+---
+title: Proxy Checker App
+emoji: 🕵️‍♂️ # 或者其他您喜欢的 emoji
+colorFrom: indigo # 卡片渐变起始颜色
+colorTo: green   # 卡片渐变结束颜色
+sdk: docker      # SDK 类型为 docker
+dockerfile_path: Dockerfile-hf # **重要**: 指定使用 Dockerfile-hf 文件
+# app_image: vichus/proxy-checker:latest # **重要**: 移除或注释掉此行
+app_port: 5001   # **重要**: 容器内应用监听的端口，必须与 Dockerfile 中 EXPOSE 的端口一致
+# pinned: false # 如果希望固定在您的 profile 页面，可以设为 true
+---
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Proxy Checker Application
 
-Currently, two official plugins are available:
+这是一个代理批量有效性测试工具。
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**功能：**
+- 批量测试 HTTP/HTTPS/SOCKS4/SOCKS5 代理的可用性。
+- 显示代理的响应时间、检测到的 IP 地址。
+- 通过 ip-api.com 获取并显示代理的地理位置信息（国家、城市）。
+- 提供查看详细地理位置信息的功能。
+- 支持将测试成功的代理信息下载为 CSV 文件。
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+**技术栈：**
+- 前端: React, TypeScript, Vite, Ant Design
+- 后端: Python, Flask
+- 部署: Docker

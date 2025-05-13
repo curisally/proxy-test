@@ -23,7 +23,7 @@ import {
 import type { TableProps } from 'antd';
 import { CheckCircleOutlined, CloseCircleOutlined, GlobalOutlined, FieldTimeOutlined, DownloadOutlined } from '@ant-design/icons';
 
-const { Header, Content, Footer } = Layout;
+const { Header, Content } = Layout;
 const { Title, Text } = Typography;
 const { TextArea } = Input;
 
@@ -56,7 +56,7 @@ interface ProxyTestResult {
   geo_location_error?: string;
 }
 
-const BACKEND_URL = 'http://localhost:5001/test_proxies';
+const BACKEND_URL = import.meta.env.DEV ? 'http://localhost:5001/test_proxies' : '/test_proxies';
 
 function App() {
   const [form] = Form.useForm();
@@ -418,17 +418,6 @@ function App() {
           </Modal>
         )}
       </Content>
-      <Footer className="app-footer">
-        <Text type="secondary">
-          Proxy Tester ©{new Date().getFullYear()} Roo AI Engineer. 确保后端服务 (backend/app.py) 正在运行在 http://localhost:5001
-        </Text>
-        {/* REMOVED: IP2Location LITE database link
-        <Divider type="vertical" />
-        <Text type="secondary">
-            IP2Location LITE database: <a href="https://lite.ip2location.com" target="_blank" rel="noopener noreferrer">Download DB1.LITE</a>
-        </Text>
-        */}
-      </Footer>
     </Layout>
   );
 }

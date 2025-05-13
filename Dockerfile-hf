@@ -1,0 +1,15 @@
+# This Dockerfile is for Hugging Face Spaces to run a pre-built image.
+# It assumes that 'vichus/proxy-checker:latest' has already been built and pushed to a container registry.
+
+FROM vichus/proxy-checker:latest
+
+# The port the application inside the pre-built image listens on.
+# This should match the EXPOSE directive in the original Dockerfile and the app_port in README.md.
+EXPOSE 5001
+
+# The command to run the application, as defined in the pre-built image.
+# This CMD might be inherited from the base image 'vichus/proxy-checker:latest'.
+# If the base image already has a correct CMD or ENTRYPOINT, this line might be optional
+# or could be set to the same CMD as in the original Dockerfile.
+# For this application, the command is to run the Flask app.
+CMD ["python", "backend/app.py"]
